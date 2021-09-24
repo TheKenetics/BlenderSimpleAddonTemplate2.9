@@ -11,7 +11,7 @@ bl_info = {
 }
 
 import bpy
-from bpy.props import EnumProperty, IntProperty, FloatVectorProperty, BoolProperty, FloatProperty, StringProperty
+from bpy.props import EnumProperty, IntProperty, FloatVectorProperty, BoolProperty, FloatProperty, StringProperty, PointerProperty
 from bpy.types import PropertyGroup, UIList, Operator, Panel, AddonPreferences
 
 """
@@ -257,8 +257,8 @@ def register():
 		bpy.utils.register_class(cls)
 	
 	## Add Custom Properties
-	#bpy.Types.WindowManager.something = IntProperty() # to not save things with blend file
-	#bpy.Types.Scene.something = IntProperty()
+	#bpy.types.WindowManager.something = PointerProperty(type=SA_PropertyGroup) # to not save things with blend file
+	#bpy.types.Scene.something = PointerProperty(type=SA_PropertyGroup)
 	
 	## Append to UI
 	# bpy.types.CLASS.append(helper_func)
@@ -268,8 +268,8 @@ def unregister():
 	# bpy.types.CLASS.remove(helper_func)
 	
 	## Remove Custom Properties
-	#del bpy.Types.Scene.something
-	#del bpy.Types.WindowManager.something
+	#del bpy.types.Scene.something
+	#del bpy.types.WindowManager.something
 	
 	for cls in reversed(classes):
 		bpy.utils.unregister_class(cls)
