@@ -87,9 +87,19 @@ context.window_manager
 
 """
 
+## Constants
+# Set to true when debugging, enables debug print statements and stuff
+DEBUGGING = True
+
+
 ## Helper Functions
 def get_addon_preferences():
 	return bpy.context.preferences.addons[__package__].preferences
+
+def dprint(print_string):
+	# print debug string
+	if DEBUGGING:
+		print(f"[DEBUG] {__package__}: {print_string}")
 
 
 ## Structs
@@ -107,7 +117,7 @@ _MT_ Menu
 _OT_ Operator
 _PT_ Panel
 _UL_ UIList
-Ex:
+Example:
 Classname = ADDONABBREVIATION_OT_something
 idname = addonabbreviation.something
 
